@@ -1,0 +1,26 @@
+From:
+ABC Solutions Pvt. Ltd.
+123 Business Street, Delhi, India
+Phone: +91-9876543210
+Email: contact@abcsolutions.com
+
+To:
+Rahul Sharma
+XYZ Enterprises
+Mumbai, India
+
+Invoice Number: INV-2026-001
+Invoice Date: 10-May-2026
+Due Date: 20-May-2026
+
+Description Qty Rate Amount
+Website Development 1 ₹20,000 ₹20,000
+Hosting & Maintenance 1 ₹5,000 ₹5,000
+
+Subtotal: ₹25,000
+GST (18%): ₹4,500
+Total Amount: ₹29,500
+
+Payment Method: Bank Transfer / UPI
+
+Thank you for your business!

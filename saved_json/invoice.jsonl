@@ -1,0 +1,1 @@
+{"file": "invoice.txt", "doc_type": "invoice", "extracted": {"invoice_number": "INV-2026-001", "invoice_date": "10-May-2026", "due_date": "20-May-2026", "bill_to": "Rahul Sharma XYZ Enterprises", "subtotal": 25000.0, "tax_amount": 4500.0, "total_amount": 29500.0}}

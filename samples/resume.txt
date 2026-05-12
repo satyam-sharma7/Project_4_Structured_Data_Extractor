@@ -1,0 +1,46 @@
+Rahul Verma
+Delhi, India
+Phone: +91-9876543210
+Email: rahul.verma@email.com
+
+PROFESSIONAL SUMMARY
+
+Motivated and detail-oriented software developer with
+3 years of experience in web development, coding,
+and project management.
+
+SKILLS
+HTML, CSS, JavaScript
+Python & Java
+React.js
+SQL & Database Management
+Communication Skills
+WORK EXPERIENCE
+
+Software Developer
+XYZ Technologies, Delhi
+Jan 2023 – Present
+
+Developed responsive web applications
+Improved system performance by 30%
+Worked with cross-functional teams
+
+Junior Developer
+TechSoft Solutions
+Jun 2021 – Dec 2022
+
+Assisted in software testing and debugging
+Maintained databases and websites
+EDUCATION
+
+Bachelor of Technology (B.Tech)
+Computer Science Engineering
+Delhi University
+2017 – 2021
+
+CERTIFICATIONS
+Full Stack Web Development
+Python Programming Certification
+LANGUAGES
+English
+Hindi
