@@ -7,6 +7,7 @@ import json
 from loader import content_type
 from router import route_and_extract
 from batch import batch_process
+from evaluation import score
 
 console = Console()
 
@@ -22,29 +23,36 @@ def main():
             format, content = content_type(path)
 
             console.print(f"\n[green]Your {format} is being extracted...[/]")
-            extracted = route_and_extract(format, content)
+            extracted, schema = route_and_extract(format, content)
 
-
+            eval_score, reason = score(extracted, schema, content)
+            
             record = {
                 "file": path.name,
                 "doc_type": format,
+                "status": "pass" if eval_score >=0.75 else "fail",
+                "score": eval_score,
+                "reason": reason,
                 "extracted": extracted
             }
 
-            with open(f"saved_json/{format}.jsonl", 'a', encoding='utf-8') as f:
-                f.write(json.dumps(record)+"\n")
+            if eval_score >= 0.75:
+                with open(f"saved_json/{format}.jsonl", 'a', encoding='utf-8') as f:
+                    f.write(json.dumps(record)+"\n")
 
-            print(f"✅ {path.name} → {format}")
+                print(f"✅ {path.name} → {format}")
+
+            elif eval_score < 0.75:
+                with open("review_queue.jsonl", 'a', encoding='utf-8') as f:
+                    f.write(json.dumps(record)+"\n")
+
+                print(f"{path.name} fails the critria.\nevaluation marks was {eval_score}")
 
         except Exception as e:
             print(f"❌ Failed: {path.name} — {e}")
 
     elif path.is_dir():
         batch_process(path)
-
-
-        
-
 
 if __name__ == "__main__":
     main()

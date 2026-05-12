@@ -27,27 +27,31 @@ def extract(file_content, prompt, schema):
 
 
 with open("json_schemas/schema.json", 'r') as f:
-    schema = json.load(f)
+    all_schema = json.load(f)
 
 def route_and_extract(format: str, file_content: str):
     if format == "article":
-        sys_prompt = "You are a structured data extractor. Extract all available fields from this article accurately. For missing fields return null. Do not guess or hallucinate values.return answer in following formate"
-        extracted = extract(file_content, sys_prompt, schema["ArticleExtract"])
+        sys_prompt = "You are a structured data extractor. Extract all available fields from this article accurately. For missing fields return 'null'. Do not guess or hallucinate values.return answer in following formate"
+        schema = all_schema["ArticleExtract"]
+        extracted = extract(file_content, sys_prompt, schema)
 
     elif format == "email":
-        sys_prompt = "You are a structured data extractor. Extract all available fields from this email accurately. For missing fields return null. Do not guess or hallucinate values."
-        extracted = extract(file_content, sys_prompt, schema["EmailExtract"])
+        sys_prompt = "You are a structured data extractor. Extract all available fields from this email accurately. For missing fields return 'null'. Do not guess or hallucinate values."
+        schema = all_schema["EmailExtract"]
+        extracted = extract(file_content, sys_prompt, schema)
 
     elif format == "invoice":
-        sys_prompt = "You are a structured data extractor. Extract all available fields from this invoice accurately. For missing fields return null. Do not guess or hallucinate values."
-        extracted = extract(file_content, sys_prompt, schema["InvoiceExtract"])
+        sys_prompt = "You are a structured data extractor. Extract all available fields from this invoice accurately. For missing fields return 'null'. Do not guess or hallucinate values."
+        schema = all_schema["EmailExtract"]
+        extracted = extract(file_content, sys_prompt, schema)
 
     elif format == "resume":
-        sys_prompt = "You are a structured data extractor. Extract all available fields from this resume accurately. For missing fields return null. Do not guess or hallucinate values."
-        extracted = extract(file_content, sys_prompt, schema["ResumeExtract"])
+        sys_prompt = "You are a structured data extractor. Extract all available fields from this resume accurately. For missing fields return 'null'. Do not guess or hallucinate values."
+        schema = all_schema["ResumeExtract"]
+        extracted = extract(file_content, sys_prompt, schema)
 
     else:
         print("content_type function caused problem.")
         print(f"Inferred format: {format}")
 
-    return extracted
+    return extracted, schema
