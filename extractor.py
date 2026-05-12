@@ -20,9 +20,10 @@ def main():
             console.print("\n[yellow]Detecting File Formate...[/]")
 
             format, content = content_type(path)
-            extracted = route_and_extract(format, content)
 
             console.print(f"\n[green]Your {format} is being extracted...[/]")
+            extracted = route_and_extract(format, content)
+
 
             record = {
                 "file": path.name,

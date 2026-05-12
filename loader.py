@@ -1,4 +1,5 @@
 import os
+import json
 from pathlib import Path
 from enum import Enum
 from pydantic import BaseModel
@@ -23,20 +24,32 @@ def content_type(path: str):
         category: ContentCategory
 
     client = OpenAI(
-        base_url= os.getenv("GOOGLE_URL"),
-        api_key= os.getenv("GOOGLE_AI_STUDIO")
+        base_url= os.getenv("OPENROUTER_URL"),
+        api_key= os.getenv("OPENROUTER_API_KEY_2")
     )
 
-    response = client.chat.completions.parse(
-        model= os.getenv("GOOGLE_MODEL"),
+    response = client.chat.completions.create(
+        # model= os.getenv("GOOGLE_MODEL"),
+        model = "inclusionai/ring-2.6-1t:free",
         messages=[
-            {"role": "system", "content": "Classify the following text into exactly one category."},
+            {
+                "role": "system",
+                "content": """Classify the following text into exactly 
+                one category as following format:
+                {
+                    "file_type":"article/resume/email/invoice"
+                }
+                """
+            },
+
             {"role": "user", "content": file_content}
         ],
-        response_format= FileClassifier
+        response_format={
+            "type": "json_object"
+        }
     )
 
-    result = response.choices[0].message.parsed
+    result = json.loads(response.choices[0].message.content)    # --> invoicee|email|article|resume
+    return result["file_type"], file_content
 
-    return result.category.value, file_content    # --> invoicee|email|article|resume
 

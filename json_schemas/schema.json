@@ -1,0 +1,37 @@
+{
+  "ArticleExtract": {
+    "title": "extracted or inferred title of article",
+    "author": "author if mentioned",
+    "key_points": [
+      "The core arguments or facts"
+    ]
+  },
+  "EmailExtract": {
+    "sender": "Email id of sender",
+    "subject": "Description of email inferred if not explicitly stated",
+    "summary": "Summarize in one sentence, max 20 words",
+    "action_items": [
+      "things user need to do"
+    ],
+    "key_information": [
+      "important facts stated (not actions, just info)"
+    ]
+  },
+  "InvoiceExtract": {
+    "invoice_number": "unique invoice number.",
+    "invoice_date": "Date which invoice is issued or made.",
+    "due_date": "Date When amount is to paid.",
+    "bill_to": "name of the person/company being billed.",
+    "subtotal": 0.0,
+    "tax_amount": 0.0,
+    "total_amount": 0.0
+  },
+  "ResumeExtract": {
+    "full_name": "Full name of the candidate.",
+    "email": "Email of the candidate",
+    "skills": [],
+    "years_of_experience": "inferred as an integer",
+    "most_recent_role": "string",
+    "education": []
+  }
+}
